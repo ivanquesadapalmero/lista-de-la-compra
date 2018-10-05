@@ -16,14 +16,14 @@ if (isset($_POST['insertar'])) {
     }
     if(empty($_POST['nombre'])){
         $error = "El nombre está vacío";
-    }
+    }else{
     $producto = array();
         $producto['nombre']=$_POST['nombre'];
         $producto['cantidad']=$_POST['cantidad'];
         $producto['precio']=$_POST['precio'];
         Calcular_Precio_Total_Producto($producto);
         $productos[] = $producto;
-    
+    }
 }
 
 if (isset($_POST['borrar'])) {
@@ -95,8 +95,7 @@ if (isset($_POST['borrar'])) {
         <h2>Añadir producto</h2>
             
                 <form name="input" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-                    Nombre<input type="text" name="nombre" value="<?php if (isset ($_POST['nombre'])) echo 
-                    $_POST['nombre'];?>"/> <br />
+                    Nombre<input type="text" name="nombre" value="<?php $error ?>"/> <br />
                     
                     Cantidad<input type="text" name="cantidad" value="<?php if (isset ($_POST['cantidad'])) echo 
                     $_POST['cantidad'];?>"/> <br />
@@ -135,6 +134,8 @@ if (isset($_POST['borrar'])) {
                         echo '<input type="hidden" name="totales[]" value="' . $producto['total'] . '" />';
                     }
                     ?>
-                </form>    
+   <?php if (isset ($_POST['nombre'])) echo 
+99
+                    $_POST['nombre'];?             </form>    
 </body>
 </html>
