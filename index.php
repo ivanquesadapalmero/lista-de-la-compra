@@ -16,7 +16,7 @@ if (isset($_POST['insertar'])) {
         
     }
     if((empty($_POST['nombre']))||(empty($_POST['cantidad']))||(empty($_POST['precio']))){
-        $error = "No puedes dejar el nombre vacÃ­o"; 
+        $error = "No puedes dejar el nombre vacío"; 
         
     } else {
         $producto = array();
