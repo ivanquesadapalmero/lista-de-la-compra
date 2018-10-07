@@ -81,8 +81,8 @@ if (isset($_POST['borrar'])) {
                 print"<tr>
                 <td>".$producto['nombre']."</td>
                 <td>".$producto['cantidad']."</td>
-                <td>".$producto['precio']."â‚¬</td>
-                <td>".$producto['total']."â‚¬</td>
+                <td>".$producto['precio']."</td>
+                <td>".$producto['total']."</td>
                 </tr>";
                 
             }
