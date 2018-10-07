@@ -88,7 +88,7 @@ if (isset($_POST['borrar'])) {
             }
 
         print"<tr><td colspan=3> Total de compra</td>
-        <td >".Calcular_Precio_Total_Compra($productos)."</td>
+        <td >".Calcular_Precio_Total_Compra($productos)."€</td>
         </tr>"
         
         
