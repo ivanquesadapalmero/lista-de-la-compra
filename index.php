@@ -88,14 +88,14 @@ if (isset($_POST['borrar'])) {
             }
 
         print"<tr><td colspan=3> Total de compra</td>
-        <td >".Calcular_Precio_Total_Compra($productos)."â‚¬</td>
+        <td >".Calcular_Precio_Total_Compra($productos)."</td>
         </tr>"
         
         
            
         ?>
         </table>
-        <h2>AÃ±adir producto</h2>
+        <h2>Añadir producto</h2>
             
                 <form name="input" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                     Nombre: <input type="text" name="nombre" value=""/> <span style="color:red"><?php echo $error  ?></span><br />
