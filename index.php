@@ -1,3 +1,4 @@
+
 <?php
 include 'funciones.php'; 
 $productos = array();
@@ -14,10 +15,11 @@ if (isset($_POST['insertar'])) {
         }
         
     }
-    if(empty($_POST['nombre'])){
-        $error = "El nombre está vacío";
-    }else{
-    $producto = array();
+    if((empty($_POST['nombre']))||(empty($_POST['cantidad']))||(empty($_POST['precio']))){
+        $error = "No puedes dejar el nombre vacÃ­o"; 
+        
+    } else {
+        $producto = array();
         $producto['nombre']=$_POST['nombre'];
         $producto['cantidad']=$_POST['cantidad'];
         $producto['precio']=$_POST['precio'];
@@ -55,17 +57,18 @@ if (isset($_POST['borrar'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Lista de la compra</title>
+    <link rel="stylesheet" type="text/css" href="./estilos.css" media="screen" />
 </head>
 <body>
     <h1>Lista de la compra <?php echo date('j/m/Y'); ?></h1> 
     
-    
+    <div>
     <table border = 1px>
         <tr>
             <th>Nombre</th>
@@ -78,30 +81,28 @@ if (isset($_POST['borrar'])) {
                 print"<tr>
                 <td>".$producto['nombre']."</td>
                 <td>".$producto['cantidad']."</td>
-                <td>".$producto['precio']."€</td>
-                <td>".$producto['total']."€</td>
+                <td>".$producto['precio']."â‚¬</td>
+                <td>".$producto['total']."â‚¬</td>
                 </tr>";
                 
             }
 
         print"<tr><td colspan=3> Total de compra</td>
-        <td>".Calcular_Precio_Total_Compra($productos)."€</td>
+        <td >".Calcular_Precio_Total_Compra($productos)."â‚¬</td>
         </tr>"
         
         
            
         ?>
         </table>
-        <h2>Añadir producto</h2>
+        <h2>AÃ±adir producto</h2>
             
                 <form name="input" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-                    Nombre<input type="text" name="nombre" value="<?php $error ?>"/> <br />
+                    Nombre: <input type="text" name="nombre" value=""/> <span style="color:red"><?php echo $error  ?></span><br />
                     
-                    Cantidad<input type="text" name="cantidad" value="<?php if (isset ($_POST['cantidad'])) echo 
-                    $_POST['cantidad'];?>"/> <br />
+                    Cantidad: <input type="text" name="cantidad" value=""/> <br />
 
-                    Precio<input type="text" name="precio" value="<?php if (isset ($_POST['precio'])) echo 
-                    $_POST['precio'];?>"/> <br />
+                    Precio: <input type="text" name="precio" value=""/> <br />
                     <input type="submit" value="Insertar" name="insertar"/>
                     <?php
                     foreach($productos as $producto) {
@@ -134,8 +135,7 @@ if (isset($_POST['borrar'])) {
                         echo '<input type="hidden" name="totales[]" value="' . $producto['total'] . '" />';
                     }
                     ?>
-   <?php if (isset ($_POST['nombre'])) echo 
-99
-                    $_POST['nombre'];?             </form>    
+                </form>  
+        </div>  
 </body>
 </html>
